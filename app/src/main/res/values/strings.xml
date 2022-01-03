@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Activity Timer</string>
+    <string name="task_list">My Activities List</string>
+    <string name="add_task">Add Activity</string>
+    <string name="add_sub_task">Add Subactivities</string>
+    <!-- Label for add task menu option to save task name[CHAR LIMIT=20] -->
+    <string name="action_save">Save</string>
+
+    <!-- Label for add task menu option that deletes the current task [CHAR LIMIT=20] -->
+    <string name="action_delete">Delete</string>
+
+    <!-- Label for dropdown menu option -->
+    <string name="value_yes">Yes</string>
+
+    <!-- Label for dropdown menu option -->
+    <string name="value_no">No</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current activity -->
+    <string name="delete_dialog_msg">Delete this activity?</string>
+
+    <!-- Dialog button text for the option to confirm deleting the current activity -->
+    <string name="delete">Delete</string>
+
+    <!-- Dialog button text for the option to confirm editing the current activity -->
+    <string name="edit">Edit</string>
+
+
+    <!-- Dialog button text for the option to cancel deletion of the current activity [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
+
+    <!-- Dialog button text for the option to start the  current activity [CHAR LIMIT=20] -->
+    <string name="start">Start</string>
+
+
+
+    <!-- Toast message in editor when current activity was successfully deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_activity_successful">Activity deleted</string>
+
+    <!-- Toast message in editor when current activity has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_activity_failed">Error with deleting activity</string>
+
+    <string name="edit_or_start_task">Do you want to start the activity or add sub-activities?</string>
+    <string name="edit_or_delete_task">Do you want to edit or delete the sub-activity?</string>
+
+
+
+    <!-- Toast message in editor when current task was successfully updated [CHAR LIMIT=NONE] -->
+    <string name="editor_update_act_successful">Activity updated</string>
+
+    <!-- Toast message in editor when current pet has failed to be updated [CHAR LIMIT=NONE] -->
+    <string name="editor_update_act_failed">Error while updating timer value</string>
+
+    <string name="value_mins">Mins</string>
+    <string name="value_secs">Secs</string>
+
+    <string name="empty_view_title_text">You do not have any activities configured yet!</string>
+    <string name="empty_view_subtitle_text">Get Started by adding your activities</string>
+
+
+    <string name="channelId">123</string>
+</resources>

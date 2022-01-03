@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/subtaskitems"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/subtask_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+    <TextView
+        android:id="@+id/subtask_timer"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:textAlignment="viewEnd"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+
+    <TextView
+        android:id="@+id/subtask_timer_unit"
+        android:layout_width="0dp"
+        android:padding="8dp"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+
+</LinearLayout>

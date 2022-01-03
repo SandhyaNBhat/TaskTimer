@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.spcreations.activitytimer">
+
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".StartActivity"
+            android:parentActivityName=".TaskListActivity"></activity>
+        <activity
+            android:name=".AddSubTasksActivity"
+            android:label="@string/add_sub_task"
+            android:parentActivityName=".AddTasksActivity"></activity>
+        <activity
+            android:name=".TaskListActivity"
+            android:label="@string/task_list" />
+        <activity
+            android:name=".AddTasksActivity"
+            android:label="@string/add_task"
+            android:parentActivityName=".TaskListActivity" />
+        <activity android:name=".SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name=".data.TaskProvider"
+            android:authorities="com.spcreations.activitytimer"
+            android:exported="false" />
+    </application>
+
+</manifest>
