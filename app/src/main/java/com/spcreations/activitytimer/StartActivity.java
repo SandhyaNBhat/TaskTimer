@@ -7,8 +7,10 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
@@ -39,6 +41,9 @@ public class StartActivity extends AppCompatActivity {
     TextView strtmsg,currenttask,progress;
     FloatingActionButton strtBtn;
 
+    private long mLastClickTime = 0;
+
+
 
     Thread sat;
     TextToSpeech mTTS;
@@ -46,6 +51,7 @@ public class StartActivity extends AppCompatActivity {
     private int currentProgress = 0;
     private int maxProgress;
     private ProgressBar progressBar;
+    private Uri mUri;
 
     private final AtomicBoolean running = new AtomicBoolean(false);
 
@@ -66,15 +72,21 @@ public class StartActivity extends AppCompatActivity {
         strtmsg = findViewById(R.id.activitystrtmsg);
         currenttask = findViewById(R.id.currentactivity);
         strtBtn = findViewById(R.id.im_start);
-        strtmsg.setText("Your activity has been started");
         progressBar = findViewById(R.id.progressbar);
         progress = findViewById(R.id.progress);
 
+        strtmsg.setText("Your activity has been started");
+
+        //Fetch the activity details passed in the previous screen
         Intent intent = getIntent();
         taskname = intent.getStringExtra("task_name");
         taskId = intent.getStringExtra("task_id");
 
+        //Fetch the activity details by calling getActivityDetails method. It returns the sub-activity flag value
         subActivityFlag = getActivityDetails(taskname);
+        Log.d("LOGTAG","Sub-Activity flag value :"+subActivityFlag);
+
+        //Initializing the flag values
         mStrtPause = false;
         mStrtIndex = 0;
         mTimeLeftInMilisecs = 0;
@@ -93,6 +105,14 @@ public class StartActivity extends AppCompatActivity {
         strtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // mis-clicking prevention, using threshold of 2000 ms
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 2000){
+                    Log.e("LOGTAG","click time threshold not crossed");
+                    return;
+                }
+
+                mLastClickTime = SystemClock.elapsedRealtime();
 
                 mStrtPause = true;
 
@@ -145,8 +165,6 @@ public class StartActivity extends AppCompatActivity {
     /*
     getActivityDetails will fetch the task details from tasks and subtasks table. Fetched data is stored in arraylist
      */
-
-
     public Boolean getActivityDetails(String taskName){
 
         Log.e("LOGTAG","Getting the activity details");
@@ -177,11 +195,8 @@ public class StartActivity extends AppCompatActivity {
 
         String[] selectionArgs = {taskname};
 
-        Cursor cursor = getContentResolver().query(TaskContract.SubTaskEntry.CONTENT_URI,
-                projection,
-                selection,
-                selectionArgs,null);
-
+        Cursor cursor = getCursorData(TaskContract.SubTaskEntry.CONTENT_URI,projection,selection,selectionArgs,null);
+            
         if (cursor.getCount()>0){
             Log.e("LOGTAG","Looping through the cursor to get the subtask details");
             try{
@@ -258,6 +273,14 @@ public class StartActivity extends AppCompatActivity {
          }else{
              return true;
          }
+
+    }
+    /*
+    getCursorData method returs the cursor
+     */
+    public Cursor getCursorData(Uri mUri,String[] mProjection,String mSelection,String[] mSelArgs,String mSortOrder){
+        Cursor c1 = getContentResolver().query(mUri,mProjection,mSelection,mSelArgs,mSortOrder);
+        return c1;
 
     }
     /*
@@ -404,10 +427,6 @@ public class StartActivity extends AppCompatActivity {
                                                     mTimeLeftInMilisecs = timerinsecs * 1000;
                                                     mTotaltimerVal = timerinsecs;
                                                 }
-
-
-
-
 
 
                                                 Log.e("LOGTAG", "Timer value " + mTimeLeftInMilisecs);
