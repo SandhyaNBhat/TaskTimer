@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -165,6 +166,7 @@ public class StartActivity extends AppCompatActivity {
     /*
     getActivityDetails will fetch the task details from tasks and subtasks table. Fetched data is stored in arraylist
      */
+    @SuppressLint("Range")
     public Boolean getActivityDetails(String taskName){
 
         Log.e("LOGTAG","Getting the activity details");

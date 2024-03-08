@@ -31,7 +31,8 @@
             android:name=".AddTasksActivity"
             android:label="@string/add_task"
             android:parentActivityName=".TaskListActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

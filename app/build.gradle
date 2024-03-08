@@ -3,14 +3,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.spcreations.tasktimer"
         minSdkVersion 26
-        targetSdkVersion 30
-        versionCode 4
-        versionName "4.0"
+        targetSdkVersion 33
+        versionCode 5
+        versionName "5.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,6 +30,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {
